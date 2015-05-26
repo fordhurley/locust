@@ -146,6 +146,7 @@ class HttpSession(requests.Session):
                     name=request_meta["name"],
                     response_time=request_meta["response_time"],
                     response_length=request_meta["content_size"],
+                    response=response,
                 )
             return response
     
@@ -221,6 +222,7 @@ class ResponseContextManager(LocustResponse):
             name=self.locust_request_meta["name"],
             response_time=self.locust_request_meta["response_time"],
             response_length=self.locust_request_meta["content_size"],
+            response=response,
         )
         self._is_reported = True
     
